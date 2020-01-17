@@ -17,11 +17,16 @@
         "lodash": "^4.17.13",
         "react": "^16.2.0",
         "react-dom": "^16.2.0",
+        "redux-devtools": "^3.5.0",
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.15.2",
         "sass-loader": "^8.0.0"
     },
     "dependencies": {
-        "create-react-component-folder": "^0.1.30"
+        "create-react-component-folder": "^0.1.30",
+        "bootstrap": "^4.4.1",
+        "react-bootstrap": "^1.0.0-beta.16",
+        "redux": "^4.0.5",
+        "react-redux": "^7.1.3"
     }
 }
