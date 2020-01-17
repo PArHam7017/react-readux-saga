@@ -29,7 +29,6 @@ class Todos extends Component {
 
     handleButtonClick(event) {
         this.props.addTodo(this.state.title);
-        console.log(store.getState());
     }
 
     render() {
@@ -44,10 +43,12 @@ class Todos extends Component {
                                     {
                                         this.props.todos.map(
                                             (todo , index) =>
-                                                <TodoItem key={index} title={todo.title} completed={todo.completed}/>
+                                                <TodoItem
+                                                    key={index}
+                                                    todo={todo}
+                                                    handleCheckboxClick={() => this.props.toggleTodo(index)}/>
                                         )
                                     }
-
                                     <div className="row">
                                         <div className="col-8">
                                             <input
@@ -67,7 +68,6 @@ class Todos extends Component {
                                             </button>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>

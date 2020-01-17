@@ -54791,6 +54791,7 @@ function (_Component) {
   _createClass(TodoItem, [{
     key: "render",
     value: function render() {
+      var todo = this.props.todo;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -54799,13 +54800,12 @@ function (_Component) {
         className: "row"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-10"
-      }, this.props.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, todo.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-2"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        onClick: this.props.handleCheckboxClick,
         type: "checkbox",
-        defaultChecked: this.props.completed,
-        name: "completed",
-        id: "completed"
+        value: todo.completed
       })))));
     }
   }]);
@@ -54913,7 +54913,6 @@ function (_Component) {
     key: "handleButtonClick",
     value: function handleButtonClick(event) {
       this.props.addTodo(this.state.title);
-      console.log(_redux__WEBPACK_IMPORTED_MODULE_4__["default"].getState());
     }
   }, {
     key: "render",
@@ -54937,8 +54936,10 @@ function (_Component) {
       }, this.props.todos.map(function (todo, index) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TodoItem__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: index,
-          title: todo.title,
-          completed: todo.completed
+          todo: todo,
+          handleCheckboxClick: function handleCheckboxClick() {
+            return _this2.props.toggleTodo(index);
+          }
         });
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "row"
@@ -55098,8 +55099,8 @@ function todos() {
       }]);
 
     case _constants__WEBPACK_IMPORTED_MODULE_1__["TOGGLE_TODO"]:
-      return state.map(function (todo, index) {
-        if (index === action.index) {
+      return state.concat().map(function (todo, index) {
+        if (index === action.payload) {
           todo.completed = !todo.completed;
         }
 

@@ -2,15 +2,20 @@ import React, { Component } from 'react';
 
 class TodoItem extends Component {
   render() {
-    return (
+      const todo = this.props.todo;
+
+      return (
         <div className="card">
             <div className="card-body">
                 <div className="row">
                     <div className="col-10">
-                        {this.props.title}
+                        {todo.title}
                     </div>
                     <div className="col-2">
-                        <input type="checkbox" defaultChecked={this.props.completed} name="completed" id="completed"/>
+                        <input
+                            onClick={this.props.handleCheckboxClick}
+                            type="checkbox"
+                            value={todo.completed}/>
                     </div>
                 </div>
             </div>
